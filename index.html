@@ -7,70 +7,13 @@
   <title>Film Length Calculator</title>
   <link rel="manifest" href="manifest.json">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    label, select {
-      display: block;
-      margin-top: 15px;
-    }
-    input[type="number"], select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      box-sizing: border-box;
-    }
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 10px;
-      font-size: 1.2em;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      background-color: #e0e0e0;
-      border-radius: 5px;
-    }
-    .links {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .links a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .links a:hover {
-      background-color: #0056b3;
-    }
+    body {font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    h2 {text-align: center; color: #333;}
+    label, select {display: block; margin-top: 15px;}
+    input[type="number"], select {width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd; box-sizing: border-box;}
+    button {width: 100%; margin-top: 20px; padding: 10px; font-size: 1.2em; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;}
+    button:hover {background-color: #0056b3;}
+    #result {margin-top: 20px; font-size: 1.2em; font-weight: bold; text-align: center; padding: 10px; background-color: #e0e0e0; border-radius: 5px;}
   </style>
   <script>
     if ('serviceWorker' in navigator) {
@@ -86,6 +29,7 @@
   <label for="filmType">Select Film Type:</label>
   <select id="filmType">
     <option value="0.34">Buergofol Film (0.34 mm)</option>
+    <option value="0.40">Buergofol Film (0.40 mm)</option>
     <option value="0.20">Yellow Film (0.20 mm)</option>
   </select>
 
@@ -98,19 +42,6 @@
   <button onclick="calculateLength()">Calculate Length</button>
 
   <div id="result"></div>
-
-  <div style="text-align:center; margin-top:30px;">
-    <img src="roll-diameter-guide.png" alt="How to find roll diameter" style="max-width:100%; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-  </div>
-
-  <div class="links">
-    <a href="help.html">Help & Install Instructions</a>
-    
-  </div>
-
-  <div style="text-align:center; margin-top:30px;">
-    <
-  </div>
 
   <script>
     function calculateLength() {
