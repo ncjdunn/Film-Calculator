@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Length Calculator</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label, select {
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 1.2em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Film Length Calculator</h2>
+
+  <label for="filmType">Select Film Type:</label>
+  <select id="filmType">
+    <option value="0.34">Buergofol Film (0.34 mm)</option>
+    <option value="0.20">Yellow Film (0.20 mm)</option>
+  </select>
+
+  <label for="outerDiameter">Outer Diameter of Roll (mm):</label>
+  <input type="number" id="outerDiameter" step="any" required>
+
+  <label for="coreDiameter">Core Diameter (mm):</label>
+  <input type="number" id="coreDiameter" step="any" required>
+
+  <button onclick="calculateLength()">Calculate Length</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateLength() {
+      const filmType = parseFloat(document.getElementById("filmType").value);
+      const outer = document.getElementById("outerDiameter").value;
+      const core = document.getElementById("coreDiameter").value;
+
+      if (!outer || !core) {
+        document.getElementById("result").innerText = "Please fill in all fields.";
+        return;
+      }
+
+      const outerDiameter = parseFloat(outer);
+      const coreDiameter = parseFloat(core);
+
+      if (isNaN(outerDiameter) || isNaN(coreDiameter) || outerDiameter <= coreDiameter) {
+        document.getElementById("result").innerText = "Enter valid numbers where outer > core.";
+        return;
+      }
+
+      const lengthMM = (Math.PI * (Math.pow(outerDiameter, 2) - Math.pow(coreDiameter, 2))) / (4 * filmType);
+      const lengthM = lengthMM / 1000;
+      const lengthFt = lengthMM / 304.8;
+
+      document.getElementById("result").innerHTML = `
+        Approximate Length:<br>
+        ${lengthM.toFixed(2)} meters<br>
+        ${lengthFt.toFixed(2)} feet
+      `;
+    }
+  </script>
+</body>
+</html>

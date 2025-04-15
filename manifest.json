@@ -1,0 +1,21 @@
+
+{
+  "name": "Film Length Calculator",
+  "short_name": "Film Calculator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "A combined film length calculator for Buergofol and Yellow Film",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
